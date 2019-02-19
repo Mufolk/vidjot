@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 const flash = require('connect-flash');
 const session = require('express-session');
+const path = require('path');
 
 const app = express();
 
@@ -38,6 +39,9 @@ app.use(session({
     resave: true,
     saveUninitialized: true
 }));
+
+//Static Folder
+app.use(express.static(path.join(__dirname, 'public ')));
 
 // Flash Connect Midleware
 app.use(flash());
